@@ -110,6 +110,13 @@ exports.forLoop = (start, end, cb) => {
 exports.forTimes = (times, cb) => {
     exports.forLoop(0, times - 1, cb);
 };
+exports.forLoopToArray = (start, end, cb) => {
+    let output = [];
+    exports.forLoop(start, end, (iterator, stop) => {
+        output.push(cb(iterator, stop));
+    });
+    return output;
+};
 exports.hasValue = (array, value) => array.indexOf(value) > -1;
 exports.hasValues = (array, values) => {
     let foundValues = 0;
@@ -137,6 +144,7 @@ exports.default = {
     forValues: exports.forValues,
     forLoop: exports.forLoop,
     forTimes: exports.forTimes,
+    forLoopToArray: exports.forLoopToArray,
     hasValue: exports.hasValue,
     hasValues: exports.hasValues,
     hasSomeValues: exports.hasSomeValues,

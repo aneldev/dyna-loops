@@ -65,6 +65,27 @@ forTimes(3, i => console.log('value', i))
 // value 1
 // value 2
 ```
+## forLoopToArray = (start: number, end: number, cb: (iterator: number, stop: () => void) => void): any[]
+
+Create fast arrays with `forLoopToArray`. 
+
+The usage is exactly like the `forLoop` with the only difference that in the callback you have to return a value. The amount of values will be in am array where is the result of `forLoopToArray`.
+
+
+```
+forLoopToArray(0, 5, i => ({imageNo: i}))
+// this returns
+// (6) [Object, Object, Object, Object, Object, Object]
+// 0: Object -> imageNo: 0
+// 1: Object -> imageNo: 1
+// 2: Object -> imageNo: 2
+// 3: Object -> imageNo: 3
+// 4: Object -> imageNo: 4
+// 5: Object -> imageNo: 5
+// length: 6
+```
+
+
 
 **Some other goodies are included as well**
 

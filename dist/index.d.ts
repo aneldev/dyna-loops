@@ -11,6 +11,7 @@ export declare const forValues: (obj: any, cb: (value: any, index: number, array
 export declare const keyForValue: (obj: any, value: any) => string;
 export declare const forLoop: (start: number, end: number, cb: (iterator: number, stop: () => void) => void) => void;
 export declare const forTimes: (times: number, cb: (iterator: number, stop: () => void) => void) => void;
+export declare const forLoopToArray: (start: number, end: number, cb: (iterator: number, stop: () => void) => void) => any[];
 export declare const hasValue: (array: any[], value: any) => boolean;
 export declare const hasValues: (array: any[], values: any[]) => boolean;
 export declare const hasSomeValues: (array: any[], values: any[]) => boolean;
@@ -24,6 +25,7 @@ declare const _default: {
     forValues: (obj: any, cb: (value: any, index: number, array: any[]) => void) => void;
     forLoop: (start: number, end: number, cb: (iterator: number, stop: () => void) => void) => void;
     forTimes: (times: number, cb: (iterator: number, stop: () => void) => void) => void;
+    forLoopToArray: (start: number, end: number, cb: (iterator: number, stop: () => void) => void) => any[];
     hasValue: (array: any[], value: any) => boolean;
     hasValues: (array: any[], values: any[]) => boolean;
     hasSomeValues: (array: any[], values: any[]) => boolean;

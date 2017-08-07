@@ -33,8 +33,17 @@ export const forLoop = (start: number, end: number, cb: (iterator: number, stop:
   for (let iterator: number = start; !stop && iterator <= end; iterator++)
     cb(iterator, () => stop = true);
 };
+
 export const forTimes = (times: number, cb: (iterator: number, stop: () => void) => void): void => {
   forLoop(0, times - 1, cb);
+};
+
+export const forLoopToArray = (start: number, end: number, cb: (iterator: number, stop: () => void) => void): any[] => {
+  let output: any[] = [];
+  forLoop(start, end, (iterator: number, stop: () => void) => {
+    output.push(cb(iterator, stop));
+  });
+  return output;
 };
 
 export const hasValue = (array: any[], value: any): boolean => array.indexOf(value) > -1;
@@ -65,6 +74,7 @@ export default {
   forValues,
   forLoop,
   forTimes,
+  forLoopToArray,
   hasValue,
   hasValues,
   hasSomeValues,

@@ -109,5 +109,19 @@ describe('loops test', () => {
 		expect(output).toBe('012345');
 	});
 
+  it('should generate a nice array using the forLoopToArray', () => {
+    let output: any[] =
+      loops
+        .forLoopToArray(
+          0, 10,
+          (iterator: number, stop: () => void) => {
+            if (iterator == 5) stop();
+            return {i: iterator};
+          });
+
+    expect(output.length).toBe(6);
+    loops.forTimes(6, (i:number)=> expect(output[i].i).toBe(i));
+  });
+
 
 });
