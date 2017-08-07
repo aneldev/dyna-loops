@@ -93,6 +93,27 @@ exports.array = (someLikeArray) => {
     }
     return Array.apply(this, someLikeArray);
 };
+exports.shuffleArray = (array) => {
+    let output = [];
+    let source = [].concat(array);
+    while (source.length)
+        output.push(source.splice(exports.random(0, source.length - 1), 1)[0]);
+    return output;
+};
+exports.random = (from, to_) => {
+    if (to_ === undefined) {
+        to_ = from;
+        from = 0;
+    }
+    if (to_ < from) {
+        let h = from;
+        from = to_;
+        to_ = h;
+    }
+    return Math.floor((Math.random() * ((to_ - from) + 1)) + from);
+};
+exports.isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n);
+exports.inRange = (number, from, to) => number >= from && number <= to;
 exports.keys = (obj) => Object.keys(obj);
 exports.values = (obj) => Object.keys(obj).map((key) => obj[key]);
 exports.keyValues = (obj) => Object.keys(obj).map((key) => ({ key, value: obj[key] }));
@@ -136,6 +157,10 @@ exports.hasSomeValues = (array, values) => {
 };
 exports.default = {
     array: exports.array,
+    shuffleArray: exports.shuffleArray,
+    random: exports.random,
+    isNumber: exports.isNumber,
+    inRange: exports.inRange,
     keys: exports.keys,
     values: exports.values,
     keyValues: exports.keyValues,

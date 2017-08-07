@@ -1,4 +1,8 @@
 export declare const array: (someLikeArray: any) => Array<any>;
+export declare const shuffleArray: (array: any[]) => any[];
+export declare const random: (from: number, to_?: number) => number;
+export declare const isNumber: (n: any) => boolean;
+export declare const inRange: (number: number, from: number, to: number) => boolean;
 export declare const keys: (obj: any) => string[];
 export declare const values: (obj: any) => any[];
 export interface IKeyValuePair {
@@ -17,6 +21,10 @@ export declare const hasValues: (array: any[], values: any[]) => boolean;
 export declare const hasSomeValues: (array: any[], values: any[]) => boolean;
 declare const _default: {
     array: (someLikeArray: any) => any[];
+    shuffleArray: (array: any[]) => any[];
+    random: (from: number, to_?: number) => number;
+    isNumber: (n: any) => boolean;
+    inRange: (number: number, from: number, to: number) => boolean;
     keys: (obj: any) => string[];
     values: (obj: any) => any[];
     keyValues: (obj: any) => IKeyValuePair[];

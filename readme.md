@@ -85,8 +85,6 @@ forLoopToArray(0, 5, i => ({imageNo: i}))
 // length: 6
 ```
 
-
-
 **Some other goodies are included as well**
 
 ## array: (someLikeArray: any) => Array<any>
@@ -107,11 +105,33 @@ array(document.querySelectorAll('div')).forEach(element => console.log(element))
 
 ```
 
+## shuffleArray = (array: any[]): any[]
+
+Returns the array shuffled.
+
+## random = (from: number, to_?: number): number
+
+Returns a number within range.
+
+```
+random(1, 100); // return 23
+random(1000);   // return 521
+
+```
+
 ## keys = (obj: any): string[]
 
 Get the keys of the Object.
 
 This is a shorthand of `Object.keys(obj)`.
+
+## isNumber = (n: any): boolean
+
+Returns if the given is number.
+
+## inRange = (number: number, from: number, to: number): boolean
+
+Returns if the given number is within the range.
 
 ## values = (obj: any): any[]
 

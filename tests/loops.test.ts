@@ -123,5 +123,14 @@ describe('loops test', () => {
     loops.forTimes(6, (i:number)=> expect(output[i].i).toBe(i));
   });
 
+  it('should shuffle an array using the shuffleArray', () => {
+    let source: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let shuffled: number[] = loops.shuffleArray(source);
+
+    expect(shuffled.length).toBe(source.length);
+    expect(shuffled.join()).not.toBe(source.join());
+    expect(shuffled.reduce((acc, v)=>{acc+=v;return acc;},0))
+      .toBe(source.reduce((acc, v)=>{acc+=v;return acc;},0));
+  });
 
 });

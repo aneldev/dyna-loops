@@ -8,6 +8,30 @@ export const array: (someLikeArray: any) => Array<any> = (someLikeArray: any) =>
   return Array.apply(this, someLikeArray)
 };
 
+export const shuffleArray = (array: any[]): any[] => {
+  let output: any[] = [];
+  let source: any[] = [].concat(array);
+  while (source.length) output.push(source.splice(random(0,source.length-1), 1)[0]);
+  return output;
+};
+
+export const random = (from: number, to_?: number): number => {
+  if (to_ === undefined) {
+    to_ = from;
+    from = 0;
+  }
+  if (to_ < from) {
+    let h = from;
+    from = to_;
+    to_ = h;
+  }
+  return Math.floor((Math.random() * ((to_ - from) + 1)) + from);
+};
+
+export const isNumber = (n: any): boolean => !isNaN(parseFloat(n)) && isFinite(n);
+
+export const inRange = (number: number, from: number, to: number): boolean => number >= from && number <= to;
+
 export const keys = (obj: any): string[] => Object.keys(obj);
 
 export const values = (obj: any): any[] => Object.keys(obj).map((key: string) => obj[key]);
@@ -66,6 +90,10 @@ export const hasSomeValues = (array: any[], values: any[]): boolean => {
 
 export default {
   array,
+  shuffleArray,
+  random,
+  isNumber,
+  inRange,
   keys,
   values,
   keyValues,
