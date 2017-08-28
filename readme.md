@@ -135,7 +135,7 @@ Returns if the given number is within the range.
 
 ## values = (obj: any): any[]
 
-Get the valus of the properties of an object.
+Get the values of the properties of an object.
 
 ## keyValues = (obj: any): IKeyValuePair[]
 
