@@ -163,7 +163,11 @@ Returns true if all values are contained in the array.
 
 ## hasSomeValues = (array: any[], values: any[]): boolean
 
-Returns true if some of the values are contained in the array.  
+Returns true if some of the values are contained in the array.
+
+## arrayPermutations = (array: any[]): any[]
+
+Find all permutations of an array.   
 
 # Interfaces
 
@@ -179,7 +183,7 @@ It offers these interfaces:
  
 # Performance
 
-Google's Chrome with v8 has optimized for function calls. 
+Google's Chrome with v8 has optimized for  	function calls. 
 
 That means that now the classic old school `for` statement:
 

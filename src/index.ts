@@ -88,8 +88,33 @@ export const hasSomeValues = (array: any[], values: any[]): boolean => {
   return foundValues > 0;
 };
 
+export const arrayPermutations = (array: any[]): any[] => {
+  // credits: http://rextester.com/OUC90847
+  let combinations: any[] = [];
+  let combination: any[] = [];
+  let indices: any[] = [];
+
+  const generate = (level: number): void => {
+    for (let i = 0; i < array.length; i++) {
+      if (!indices[i]) {
+        indices[i] = true;
+        combination[level] = array[i];
+        if (level < array.length - 1)
+          generate(level + 1);
+        else
+          combinations.push([].concat(combination));
+        indices[i] = false;
+      }
+    }
+  };
+
+  generate(0);
+  return combinations;
+};
+
 export default {
   array,
+  arrayPermutations,
   shuffleArray,
   random,
   isNumber,
