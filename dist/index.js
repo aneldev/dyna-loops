@@ -155,8 +155,30 @@ exports.hasSomeValues = (array, values) => {
     });
     return foundValues > 0;
 };
+exports.arrayPermutations = (array) => {
+    // credits: http://rextester.com/OUC90847
+    let combinations = [];
+    let combination = [];
+    let indices = [];
+    const generate = (level) => {
+        for (let i = 0; i < array.length; i++) {
+            if (!indices[i]) {
+                indices[i] = true;
+                combination[level] = array[i];
+                if (level < array.length - 1)
+                    generate(level + 1);
+                else
+                    combinations.push([].concat(combination));
+                indices[i] = false;
+            }
+        }
+    };
+    generate(0);
+    return combinations;
+};
 exports.default = {
     array: exports.array,
+    arrayPermutations: exports.arrayPermutations,
     shuffleArray: exports.shuffleArray,
     random: exports.random,
     isNumber: exports.isNumber,
