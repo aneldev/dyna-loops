@@ -20,9 +20,13 @@ export declare const hasValue: (array: any[], value: any) => boolean;
 export declare const hasValues: (array: any[], values: any[]) => boolean;
 export declare const hasSomeValues: (array: any[], values: any[]) => boolean;
 export declare const arrayPermutations: (array: any[]) => any[];
+export declare const arrayCombinations: (array: any[]) => any[];
+export declare const arrayPermutedCombinations: (array: any[]) => any[];
 declare const _default: {
     array: (someLikeArray: any) => any[];
     arrayPermutations: (array: any[]) => any[];
+    arrayCombinations: (array: any[]) => any[];
+    arrayPermutedCombinations: (array: any[]) => any[];
     shuffleArray: (array: any[]) => any[];
     random: (from: number, to_?: number) => number;
     isNumber: (n: any) => boolean;

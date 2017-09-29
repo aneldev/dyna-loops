@@ -176,9 +176,31 @@ exports.arrayPermutations = (array) => {
     generate(0);
     return combinations;
 };
+exports.arrayCombinations = (array) => {
+    // credits: http://js-algorithms.tutorialhorizon.com/2015/10/23/combinations-of-an-array/
+    let i, j, temp;
+    let result = [];
+    let arrLen = array.length;
+    let combinations = Math.pow(2, arrLen);
+    for (i = 0; i < combinations; i++) {
+        temp = [];
+        for (j = 0; j < arrLen; j++) {
+            if ((i & Math.pow(2, j))) {
+                temp.push(array[j]);
+            }
+        }
+        result.push(temp);
+    }
+    return result.filter((v) => !!v.length);
+};
+exports.arrayPermutedCombinations = (array) => {
+    return [].concat(exports.arrayCombinations(array).map((a) => exports.arrayPermutations(a)));
+};
 exports.default = {
     array: exports.array,
     arrayPermutations: exports.arrayPermutations,
+    arrayCombinations: exports.arrayCombinations,
+    arrayPermutedCombinations: exports.arrayPermutedCombinations,
     shuffleArray: exports.shuffleArray,
     random: exports.random,
     isNumber: exports.isNumber,

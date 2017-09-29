@@ -142,8 +142,23 @@ describe('loops test', () => {
 
   it('should create generate permutations for an array', () => {
     const sample: string[] = ['Anne', 'Lorry', 'Nadja', 'Laetitia'];
+    const calc: string[] =loops.arrayPermutations(sample);
     const expected: string = '[["Anne","Lorry","Nadja","Laetitia"],["Anne","Lorry","Laetitia","Nadja"],["Anne","Nadja","Lorry","Laetitia"],["Anne","Nadja","Laetitia","Lorry"],["Anne","Laetitia","Lorry","Nadja"],["Anne","Laetitia","Nadja","Lorry"],["Lorry","Anne","Nadja","Laetitia"],["Lorry","Anne","Laetitia","Nadja"],["Lorry","Nadja","Anne","Laetitia"],["Lorry","Nadja","Laetitia","Anne"],["Lorry","Laetitia","Anne","Nadja"],["Lorry","Laetitia","Nadja","Anne"],["Nadja","Anne","Lorry","Laetitia"],["Nadja","Anne","Laetitia","Lorry"],["Nadja","Lorry","Anne","Laetitia"],["Nadja","Lorry","Laetitia","Anne"],["Nadja","Laetitia","Anne","Lorry"],["Nadja","Laetitia","Lorry","Anne"],["Laetitia","Anne","Lorry","Nadja"],["Laetitia","Anne","Nadja","Lorry"],["Laetitia","Lorry","Anne","Nadja"],["Laetitia","Lorry","Nadja","Anne"],["Laetitia","Nadja","Anne","Lorry"],["Laetitia","Nadja","Lorry","Anne"]]';
-    expect(JSON.stringify(loops.arrayPermutations(sample)).trim()).toBe(expected.trim());
+    expect(JSON.stringify(calc).trim()).toBe(expected.trim());
+  });
+
+  it('should create generate combinations for an array', () => {
+    const sample: string[] = ['Anne', 'Lorry', 'Nadja', 'Laetitia'];
+    const calc: string[] = loops.arrayCombinations(sample);
+    const expected: string = '[["Anne"],["Lorry"],["Anne","Lorry"],["Nadja"],["Anne","Nadja"],["Lorry","Nadja"],["Anne","Lorry","Nadja"],["Laetitia"],["Anne","Laetitia"],["Lorry","Laetitia"],["Anne","Lorry","Laetitia"],["Nadja","Laetitia"],["Anne","Nadja","Laetitia"],["Lorry","Nadja","Laetitia"],["Anne","Lorry","Nadja","Laetitia"]]';
+    expect(JSON.stringify(calc).trim()).toBe(expected.trim());
+  });
+
+  it('should create generate permuted combinations for an array', () => {
+    const sample: string[] = ['Anne', 'Lorry', 'Laetitia'];
+    const calc: string[] = loops.arrayPermutedCombinations(sample);
+    const expected: string = '[[["Anne"]],[["Lorry"]],[["Anne","Lorry"],["Lorry","Anne"]],[["Laetitia"]],[["Anne","Laetitia"],["Laetitia","Anne"]],[["Lorry","Laetitia"],["Laetitia","Lorry"]],[["Anne","Lorry","Laetitia"],["Anne","Laetitia","Lorry"],["Lorry","Anne","Laetitia"],["Lorry","Laetitia","Anne"],["Laetitia","Anne","Lorry"],["Laetitia","Lorry","Anne"]]]';
+    expect(JSON.stringify(calc).trim()).toBe(expected.trim());
   });
 
 });
