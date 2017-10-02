@@ -115,21 +115,21 @@ export const arrayPermutations = (array: any[]): any[] => {
 
 export const arrayCombinations = (array: any[]): any[] => {
   // credits: http://js-algorithms.tutorialhorizon.com/2015/10/23/combinations-of-an-array/
-  let i: number, j: number, temp: any[];
-  let result: any[] = [];
-  let arrLen: number = array.length;
-  let combinations: number = Math.pow(2, arrLen);
+  let combinations: any[] = [];
+  let compsPower: number = Math.pow(2, array.length);
 
-  for (i = 0; i < combinations; i++) {
-    temp = [];
-    for (j = 0; j < arrLen; j++) {
+  for (let i = 0; i < compsPower; i++) {
+    let combination: any[] = [];
+    for (let j = 0; j < array.length; j++) {
       if ((i & Math.pow(2, j))) {
-        temp.push(array[j]);
+        combination.push(array[j]);
       }
     }
-    result.push(temp)
+    if (combination.length) {
+      combinations.push(combination)
+    }
   }
-  return result.filter((v: any[]) => !!v.length);
+  return combinations;
 };
 
 export const arrayPermutedCombinations = (array: any[]): any[] => {
