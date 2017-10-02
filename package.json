@@ -1,6 +1,6 @@
 {
   "name": "dyna-loops",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Dyna loops is a very tiny library that replaces the ugly for loop and it's variations",
   "repository": {
     "type": "git",
