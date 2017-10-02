@@ -184,12 +184,12 @@ exports.arrayCombinations = (array) => {
         let combination = [];
         for (let j = 0; j < array.length; j++) {
             if ((i & Math.pow(2, j))) {
-                if (array[j].length) {
-                    combination.push(array[j]);
-                }
+                combination.push(array[j]);
             }
         }
-        combinations.push(combination);
+        if (combination.length) {
+            combinations.push(combination);
+        }
     }
     return combinations;
 };
