@@ -169,6 +169,10 @@ Returns true if some of the values are contained in the array.
 
 Find all permutations of an array.   
 
+## uniques = (array: any[]): any[] 
+
+Removes the douplicated elements in an array (by ===).
+
 # Interfaces
 
 It offers these interfaces:

@@ -196,6 +196,13 @@ exports.arrayCombinations = (array) => {
 exports.arrayPermutedCombinations = (array) => {
     return [].concat(exports.arrayCombinations(array).map((a) => exports.arrayPermutations(a)));
 };
+exports.uniques = (array) => {
+    return array.reduce((acc, item) => {
+        if (acc.indexOf(item) === -1)
+            acc.push((item));
+        return acc;
+    }, []);
+};
 exports.default = {
     array: exports.array,
     arrayPermutations: exports.arrayPermutations,
@@ -217,6 +224,7 @@ exports.default = {
     hasValue: exports.hasValue,
     hasValues: exports.hasValues,
     hasSomeValues: exports.hasSomeValues,
+    uniques: exports.uniques,
 };
 
 

@@ -1,1 +1,1 @@
-console.log('Debug application');
+console.log('debug-dev');

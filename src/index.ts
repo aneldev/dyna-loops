@@ -136,6 +136,13 @@ export const arrayPermutedCombinations = (array: any[]): any[] => {
   return [].concat(arrayCombinations(array).map((a: any[]) => arrayPermutations(a)));
 };
 
+export const uniques = (array: any[]): any[] => {
+  return array.reduce((acc: any[], item) => {
+    if (acc.indexOf(item) === -1) acc.push((item));
+    return acc;
+  }, []);
+};
+
 
 export default {
   array,
@@ -158,4 +165,5 @@ export default {
   hasValue,
   hasValues,
   hasSomeValues,
+  uniques,
 }
