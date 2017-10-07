@@ -22,6 +22,7 @@ export declare const hasSomeValues: (array: any[], values: any[]) => boolean;
 export declare const arrayPermutations: (array: any[]) => any[];
 export declare const arrayCombinations: (array: any[]) => any[];
 export declare const arrayPermutedCombinations: (array: any[]) => any[];
+export declare const uniques: (array: any[]) => any[];
 declare const _default: {
     array: (someLikeArray: any) => any[];
     arrayPermutations: (array: any[]) => any[];
@@ -43,5 +44,6 @@ declare const _default: {
     hasValue: (array: any[], value: any) => boolean;
     hasValues: (array: any[], values: any[]) => boolean;
     hasSomeValues: (array: any[], values: any[]) => boolean;
+    uniques: (array: any[]) => any[];
 };
 export default _default;
