@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 const package_ = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const loaders = require('./webpack.loaders');
@@ -11,11 +12,11 @@ const plugins = require('./webpack.plugins');
 const config = {
   target: 'node', // help: https://webpack.github.io/docs/configuration.html#target
   entry: [
-	  // do not load babel-polyfill here, the application should load the polyfills!
+    // do not load babel-polyfill here, the application should load the polyfills!
     // the entry application code
     path.resolve(__dirname, 'src/index.ts')
   ],
-	externals: [],
+  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
