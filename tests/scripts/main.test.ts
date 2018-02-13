@@ -1,6 +1,6 @@
 declare let jasmine: any, describe: any, expect: any, it: any;
 
-import loops from '../src/index';
+import loops from '../../src/index';
 
 let testObject = {
   fname: 'John',
