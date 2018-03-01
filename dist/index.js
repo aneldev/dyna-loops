@@ -204,6 +204,21 @@ exports.uniques = function (array) {
         return acc;
     }, []);
 };
+exports.round = function (value, digits) {
+    return Math.round(value * Math.pow(10, digits)) / Math.pow(10, digits);
+};
+exports.floor = function (value, digits) {
+    return Math.floor(value * Math.pow(10, digits)) / Math.pow(10, digits);
+};
+exports.roundToString = function (value, digits) {
+    var minValue = 1 / (Math.pow(10, digits));
+    if (value === 0 || value >= minValue) {
+        return exports.round(value, digits).toLocaleString();
+    }
+    else {
+        return '<' + (minValue.toLocaleString());
+    }
+};
 exports.default = {
     array: exports.array,
     arrayPermutations: exports.arrayPermutations,

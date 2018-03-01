@@ -23,6 +23,9 @@ export declare const arrayPermutations: (array: any[]) => any[];
 export declare const arrayCombinations: (array: any[]) => any[];
 export declare const arrayPermutedCombinations: (array: any[]) => any[];
 export declare const uniques: (array: any[]) => any[];
+export declare const round: (value: number, digits: number) => number;
+export declare const floor: (value: number, digits: number) => number;
+export declare const roundToString: (value: number, digits: number) => string;
 declare const _default: {
     array: (someLikeArray: any) => any[];
     arrayPermutations: (array: any[]) => any[];

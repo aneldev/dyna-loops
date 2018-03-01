@@ -143,6 +143,25 @@ export const uniques = (array: any[]): any[] => {
   }, []);
 };
 
+export const round = (value: number, digits: number): number => {
+  return Math.round(value * Math.pow(10, digits)) / Math.pow(10, digits);
+};
+
+export const floor = (value: number, digits: number): number => {
+  return Math.floor(value * Math.pow(10, digits)) / Math.pow(10, digits);
+};
+
+export const roundToString = (value: number, digits: number): string => {
+  const minValue: number = 1 / (Math.pow(10, digits));
+
+  if (value === 0 || value >= minValue) {
+    return round(value, digits).toLocaleString();
+  }
+  else {
+    return '<' + (minValue.toLocaleString());
+  }
+};
+
 
 export default {
   array,
