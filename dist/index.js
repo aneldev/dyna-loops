@@ -219,6 +219,38 @@ exports.roundToString = function (value, digits) {
         return '<' + (minValue.toLocaleString());
     }
 };
+// Debounce factory function like _.debounce
+// Creates a function that calls the given function in debounce mode.
+// On 1st hit is calls the function immediately. On repeated in timeout hits waits till the end of timeout and then it calls is again.
+exports.debounce = function (func, timeout) {
+    if (timeout === void 0) { timeout = 100; }
+    var active = false;
+    var toCall = null;
+    var timerHandler;
+    var callIt = function () {
+        active = false;
+        if (!active && toCall) {
+            toCall();
+            toCall = null;
+        }
+    };
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        if (active) {
+            toCall = function () { return func.apply(void 0, args); };
+            clearTimeout(timerHandler);
+            timerHandler = setTimeout(callIt, timeout);
+        }
+        else {
+            func.apply(void 0, args);
+            active = true;
+            timerHandler = setTimeout(callIt, timeout);
+        }
+    };
+};
 exports.default = {
     array: exports.array,
     arrayPermutations: exports.arrayPermutations,
@@ -241,6 +273,7 @@ exports.default = {
     hasValues: exports.hasValues,
     hasSomeValues: exports.hasSomeValues,
     uniques: exports.uniques,
+    debounce: exports.debounce,
 };
 
 

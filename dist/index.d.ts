@@ -26,6 +26,7 @@ export declare const uniques: (array: any[]) => any[];
 export declare const round: (value: number, digits: number) => number;
 export declare const floor: (value: number, digits: number) => number;
 export declare const roundToString: (value: number, digits: number) => string;
+export declare const debounce: (func: any, timeout?: number) => any;
 declare const _default: {
     array: (someLikeArray: any) => any[];
     arrayPermutations: (array: any[]) => any[];
@@ -48,5 +49,6 @@ declare const _default: {
     hasValues: (array: any[], values: any[]) => boolean;
     hasSomeValues: (array: any[], values: any[]) => boolean;
     uniques: (array: any[]) => any[];
+    debounce: (func: any, timeout?: number) => any;
 };
 export default _default;
