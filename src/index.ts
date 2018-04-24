@@ -11,7 +11,7 @@ export const array: (someLikeArray: any) => Array<any> = (someLikeArray: any) =>
 export const shuffleArray = (array: any[]): any[] => {
   let output: any[] = [];
   let source: any[] = [].concat(array);
-  while (source.length) output.push(source.splice(random(0,source.length-1), 1)[0]);
+  while (source.length) output.push(source.splice(random(0, source.length - 1), 1)[0]);
   return output;
 };
 
@@ -162,6 +162,36 @@ export const roundToString = (value: number, digits: number): string => {
   }
 };
 
+// Debounce factory function like _.debounce
+// Creates a function that calls the given function in debounce mode.
+// On 1st hit is calls the function immediately. On repeated in timeout hits waits till the end of timeout and then it calls is again.
+export const debounce = (func: any, timeout: number = 100): any => {
+  let active: boolean = false;
+  let toCall: any = null;
+  let timerHandler: any;
+
+  const callIt = () => {
+    active = false;
+    if (!active && toCall) {
+      toCall();
+      toCall = null;
+    }
+  };
+
+  return (...args) => {
+    if (active) {
+      toCall = () => func(...args);
+      clearTimeout(timerHandler);
+      timerHandler = setTimeout(callIt, timeout);
+    }
+    else {
+      func(...args);
+      active = true;
+      timerHandler = setTimeout(callIt, timeout);
+    }
+  }
+};
+
 
 export default {
   array,
@@ -185,4 +215,5 @@ export default {
   hasValues,
   hasSomeValues,
   uniques,
+  debounce,
 }
