@@ -53,6 +53,9 @@ forLoop(0, 10, (i, stop) => { if (i==3) stop(); else console.log('value', i);})
 // value 2
 ```
 
+## forLoopByNext = (start: number, end: number, cb: (iterator: number, next: () => void) => void): void
+
+Iterates asynchronously. It calls the cb passing as 2nd argument the `next()` function that should be called to call the next.
 
 ## forTimes = (times: number, cb: (iterator: number, stop: () => void) => void): void  
 

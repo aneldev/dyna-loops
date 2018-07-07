@@ -58,6 +58,22 @@ export const forLoop = (start: number, end: number, cb: (iterator: number, stop:
     cb(iterator, () => stop = true);
 };
 
+
+export const forLoopByNext = (start: number, end: number, cb: (iterator: number, next: () => void) => void): void => {
+  const funcs: Array<(iterator: number, next: () => void) => void> = Array(end - start + 1).fill(cb);
+  let index: number = start;
+  const run = (): void => {
+    if (funcs.length) {
+      const func = funcs.pop();
+      func(index, () => {
+        index++;
+        run();
+      });
+    }
+  };
+  run();
+};
+
 export const forTimes = (times: number, cb: (iterator: number, stop: () => void) => void): void => {
   forLoop(0, times - 1, cb);
 };
@@ -193,6 +209,7 @@ export const debounce = (func: any, timeout: number = 100): any => {
 };
 
 
+
 export default {
   array,
   arrayPermutations,
@@ -209,6 +226,7 @@ export default {
   forKeys,
   forValues,
   forLoop,
+  forLoopByNext,
   forTimes,
   forLoopToArray,
   hasValue,

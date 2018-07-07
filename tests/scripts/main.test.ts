@@ -1,6 +1,6 @@
 declare let jasmine: any, describe: any, expect: any, it: any;
 
-import loops, {debounce} from '../../src/index';
+import loops, {debounce, forLoopByNext} from '../../src/index';
 
 let testObject = {
   fname: 'John',
@@ -193,4 +193,17 @@ describe('loops test', () => {
       done();
     },200);
   });
+
+  it('should call the cbs with forLoopByNext in correct order', (done: Function) => {
+    let collect: string = "";
+    forLoopByNext(5, 7, (index: number, next: () => void) => {
+      collect += index;
+      setTimeout(next, 500);
+      if (collect.length === 3) {
+        expect(collect).toBe("567");
+        done();
+      }
+    })
+  });
+
 });
