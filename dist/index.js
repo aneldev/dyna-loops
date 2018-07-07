@@ -129,6 +129,20 @@ exports.forLoop = function (start, end, cb) {
     for (var iterator = start; !stop && iterator <= end; iterator++)
         cb(iterator, function () { return stop = true; });
 };
+exports.forLoopByNext = function (start, end, cb) {
+    var funcs = Array(end - start + 1).fill(cb);
+    var index = start;
+    var run = function () {
+        if (funcs.length) {
+            var func = funcs.pop();
+            func(index, function () {
+                index++;
+                run();
+            });
+        }
+    };
+    run();
+};
 exports.forTimes = function (times, cb) {
     exports.forLoop(0, times - 1, cb);
 };
@@ -267,6 +281,7 @@ exports.default = {
     forKeys: exports.forKeys,
     forValues: exports.forValues,
     forLoop: exports.forLoop,
+    forLoopByNext: exports.forLoopByNext,
     forTimes: exports.forTimes,
     forLoopToArray: exports.forLoopToArray,
     hasValue: exports.hasValue,
