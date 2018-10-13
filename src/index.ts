@@ -169,13 +169,21 @@ export const floor = (value: number, digits: number): number => {
 
 export const roundToString = (value: number, digits: number): string => {
   const minValue: number = 1 / (Math.pow(10, digits));
+  let text: string;
 
   if (value === 0 || value >= minValue) {
-    return round(value, digits).toLocaleString();
+    text = round(value, digits).toLocaleString();
   }
   else {
-    return '<' + (minValue.toLocaleString());
+    text = '<' + (minValue.toLocaleString());
   }
+
+  if (digits > 0) {
+    if (text.indexOf('.') == -1) text += '.';
+    while (text.length - text.indexOf('.') - 1 < digits) text += '0';
+  }
+
+  return text;
 };
 
 // Debounce factory function like _.debounce

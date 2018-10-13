@@ -226,12 +226,20 @@ exports.floor = function (value, digits) {
 };
 exports.roundToString = function (value, digits) {
     var minValue = 1 / (Math.pow(10, digits));
+    var text;
     if (value === 0 || value >= minValue) {
-        return exports.round(value, digits).toLocaleString();
+        text = exports.round(value, digits).toLocaleString();
     }
     else {
-        return '<' + (minValue.toLocaleString());
+        text = '<' + (minValue.toLocaleString());
     }
+    if (digits > 0) {
+        if (text.indexOf('.') == -1)
+            text += '.';
+        while (text.length - text.indexOf('.') - 1 < digits)
+            text += '0';
+    }
+    return text;
 };
 // Debounce factory function like _.debounce
 // Creates a function that calls the given function in debounce mode.
