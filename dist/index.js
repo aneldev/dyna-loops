@@ -95,11 +95,7 @@ exports.array = function (someLikeArray) {
     return Array.apply(_this, someLikeArray);
 };
 exports.shuffleArray = function (array) {
-    var output = [];
-    var source = [].concat(array);
-    while (source.length)
-        output.push(source.splice(exports.random(0, source.length - 1), 1)[0]);
-    return output;
+    return array.concat().sort(function () { return Math.random() - 0.5; });
 };
 exports.random = function (from, to_) {
     if (to_ === undefined) {

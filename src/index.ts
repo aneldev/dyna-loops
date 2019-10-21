@@ -9,10 +9,7 @@ export const array: (someLikeArray: any) => Array<any> = (someLikeArray: any) =>
 };
 
 export const shuffleArray = (array: any[]): any[] => {
-  let output: any[] = [];
-  let source: any[] = [].concat(array);
-  while (source.length) output.push(source.splice(random(0, source.length - 1), 1)[0]);
-  return output;
+  return array.concat().sort(() => Math.random() - 0.5);
 };
 
 export const random = (from: number, to_?: number): number => {
